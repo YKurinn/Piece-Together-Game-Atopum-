@@ -49,8 +49,6 @@ class Character : public Sprite {
 
 		virtual void loadData() = 0;//读取存档时调用
 
-		virtual void firstInitialize();//只会在游戏第一次启动时调用
-
 		virtual void refresh();//依据等级更新角色状态
 
 		void equipWeapon(Weapon* weapon);

@@ -48,7 +48,7 @@ void Weapon::remove() {
 	else if (this->increaseType == "speed") {
 		owner->basicSpeed /= (1 + this->increasePercent);
 	}
-	this->owner == nullptr;
+	this->owner = nullptr;
 	
 	delete this;
 }

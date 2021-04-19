@@ -18,11 +18,6 @@ void Character::removeWeapon() {
 	this->weapon = nullptr;
 }
 
-void Character::firstInitialize() {
-	this->level = 0;
-	this->ownership = false;
-}
-
 void Character::refresh() {
 	//health
 	this->maxHealth = this->levelZeroHealth + (this->level*this->levelUpIncreaseHealth);

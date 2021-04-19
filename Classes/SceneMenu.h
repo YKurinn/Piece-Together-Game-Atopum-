@@ -3,8 +3,10 @@
 
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 
 USING_NS_CC;
+using namespace cocos2d::ui;
 
 class SceneMenu : public cocos2d::Scene
 {
@@ -18,6 +20,9 @@ public:
 	Menu *buttonSetu;
 	Menu *buttonSave;
 	Menu *buttonExit;
+
+	Button* saveSuccessButton;
+	Label* saveSuccessLabel;
 
 	void buttonStartClick(cocos2d::Object *Sender);
 	void buttonSettingClick(cocos2d::Object *Sender);

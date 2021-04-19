@@ -1,7 +1,7 @@
 #include "CharacterA.h"
 
 
-CharacterA* CharacterA::chara = NULL;//静态全局对象初始化
+CharacterA* CharacterA::chara = nullptr;//静态全局对象初始化
 
 
 CharacterA* CharacterA::create(const std::string& filename)
@@ -9,7 +9,7 @@ CharacterA* CharacterA::create(const std::string& filename)
 	CharacterA *sprite = new (std::nothrow) CharacterA();
 	if (sprite && sprite->initWithFile(filename))
 	{
-		sprite->autorelease();
+		//sprite->autorelease();
 		//name
 		sprite->name = "坂上智代";
 		//health
@@ -24,6 +24,8 @@ CharacterA* CharacterA::create(const std::string& filename)
 		//speed
 		sprite->levelZeroSpeed = 0.5;
 		sprite->levelUpIncreaseSpeed = 0.01;
+		sprite->firstInitialize();
+
 		return sprite;
 	}
 	CC_SAFE_DELETE(sprite);
@@ -33,8 +35,8 @@ CharacterA* CharacterA::create(const std::string& filename)
 
 CharacterA* CharacterA::getChara() {
 	//角色A初始化
-	if (chara == NULL) {
-		chara = CharacterA::create("Helloworld.png");
+	if (chara == nullptr) {
+		chara = CharacterA::create("charaA.png");
 	}
 	return chara;
 }

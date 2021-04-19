@@ -11,33 +11,15 @@ private:
 public:
 	static CharacterA* getChara();//»ñÈ¡µ¥Àý
 
-	virtual void runSkill();
+	virtual void runSkill()override;
 
-	virtual void endSkill();
+	virtual void endSkill()override;
 
 	virtual void firstInitialize();
 
-	virtual void saveData();
+	virtual void saveData()override;
 
-	virtual void loadData();
+	virtual void loadData()override;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif // !_CHARACTERA_H
