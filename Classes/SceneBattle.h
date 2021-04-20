@@ -17,7 +17,21 @@ public:
 
 	Menu *buttonPause;
 
+	Sprite* playerBlood;
+	Sprite* enemyBlood;
+
 	void buttonPauseClick(cocos2d::Object *Sender);
+
+	void playerAttack(float dt);
+
+	void enemyAttack(float dt);
+
+	void playerEndSkill(float dt);
+
+	void enemyEndSkill(float dt);
+	
+	void update(float dt);
+
 };
 
 #endif 

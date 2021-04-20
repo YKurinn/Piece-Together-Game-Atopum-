@@ -15,7 +15,7 @@ class Weapon :public Sprite{
         std::string increaseType;
         Character* owner;
 
-		static Weapon* create(const std::string& filename,double increasePercent,std::string increaseType);
+		static Weapon* create(const std::string& filename, std::string name,double increasePercent,std::string increaseType);
 
         void equip(Character* chara);
 

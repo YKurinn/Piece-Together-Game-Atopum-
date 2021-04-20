@@ -2,12 +2,13 @@
 #include "Character.h"
 
 
-Weapon* Weapon::create(const std::string& filename, double increasePercent, std::string increaseType)
+Weapon* Weapon::create(const std::string& filename,std::string name, double increasePercent, std::string increaseType)
 {
 	Weapon *weapon = new (std::nothrow) Weapon();
 	if (weapon && weapon->initWithFile(filename))
 	{
-		weapon->autorelease();
+		//weapon->autorelease();
+		weapon->name = name;
 		weapon->increasePercent = increasePercent;
 		weapon->increaseType = increaseType;
 		return weapon;

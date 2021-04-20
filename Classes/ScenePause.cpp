@@ -30,7 +30,6 @@ bool ScenePause::init() {
 	buttonToCharacter->setPosition(designResolutionSize.width*0.6, designResolutionSize.height*0.5);
 	this->addChild(buttonToCharacter);
 
-
 	return true;
 }
 void ScenePause::buttonContinueClick(cocos2d::Object *sender) {

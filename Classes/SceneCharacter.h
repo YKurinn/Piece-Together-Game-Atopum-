@@ -2,8 +2,10 @@
 #define __CHARACTER_H__
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 USING_NS_CC;
 
+using namespace cocos2d::ui;
 
 class SceneCharacter : public cocos2d::Scene
 {
@@ -14,7 +16,15 @@ public:
 
 	Menu *buttonBack;
 
-	Menu *buttonToWeapon;
+	Button *buttonToWeapon;
+
+	Button *buttonCharacterA;
+
+	Button *buttonCharacterB;
+
+	Button *buttonCharacterC;
+
+	Button *buttonCharacterD;
 
 	void buttonBackClick(cocos2d::Object *Sender);
 

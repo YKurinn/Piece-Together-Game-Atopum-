@@ -70,12 +70,11 @@ bool SceneMenu::init()
 		saveSuccessLabel->setVisible(false);
 	}
 	);
-	saveSuccessLabel = Label::createWithTTF("Save success!", "fonts\\Marker Felt.ttf", 40);
+	saveSuccessLabel = Label::createWithTTF("Saving success!", "fonts\\Marker Felt.ttf", 40);
 	saveSuccessLabel->setPosition(Vec2(800, 800));
 	saveSuccessLabel->setVisible(false);
 	this->addChild(saveSuccessButton, 2);
 	this->addChild(saveSuccessLabel, 2);
-
 
 	return true;
 }
