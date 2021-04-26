@@ -1,5 +1,7 @@
 #include "GlobalInstanceClass.h"
 
+bool GlobalInstanceClass::music = true;
+bool GlobalInstanceClass::musicEffect = true;
 Character* GlobalInstanceClass::enemy = nullptr;
 Character* GlobalInstanceClass::player = nullptr;
 bool GlobalInstanceClass::isGameSaved = nullptr;
@@ -47,6 +49,8 @@ bool GlobalInstanceClass::loadAll() {
 	CharacterB::getChara()->loadData();
 	CharacterC::getChara()->loadData();
 	CharacterD::getChara()->loadData();
+	GlobalInstanceClass::musicEffect = UserDefault::sharedUserDefault()->getBoolForKey("musicEffect");
+	GlobalInstanceClass::music = UserDefault::sharedUserDefault()->getBoolForKey("music");
 	return true;
 }
 
@@ -55,4 +59,15 @@ void GlobalInstanceClass::firstInitializeAll() {
 	CharacterB::getChara()->firstInitialize();
 	CharacterC::getChara()->firstInitialize();
 	CharacterD::getChara()->firstInitialize();
+}
+
+void GlobalInstanceClass::playMusicEffect(const char* file) {
+	if (musicEffect) {
+		SimpleAudioEngine::getInstance()->playEffect(file, false);
+	}
+}
+void GlobalInstanceClass::playMusic(const char* file) {
+	if (music) {
+		SimpleAudioEngine::getInstance()->playBackgroundMusic(file, true);
+	}
 }

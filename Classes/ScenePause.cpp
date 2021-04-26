@@ -33,10 +33,12 @@ bool ScenePause::init() {
 	return true;
 }
 void ScenePause::buttonContinueClick(cocos2d::Object *sender) {
+	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 	auto sceneBattle = SceneBattle::create();
 	Director::getInstance()->popScene();
 }
 void ScenePause::buttonToCharacterClick(cocos2d::Object *sender) {
+	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 	auto sceneCharacter = SceneCharacter::create();
 	Director::getInstance()->popScene();
 	Director::getInstance()->replaceScene(sceneCharacter);

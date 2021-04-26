@@ -1,6 +1,7 @@
 #include "SceneSetu.h"
 #include "SceneMenu.h"
 #include "AppDelegate.h"
+#include "GlobalInstanceClass.h"
 
 
 USING_NS_CC;
@@ -28,6 +29,7 @@ bool SceneSetu::init() {
 	return true;
 }
 void SceneSetu::buttonBackClick(cocos2d::Object *sender) {
+	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 	auto sceneMenu = SceneMenu::create();
 	Director::getInstance()->replaceScene(sceneMenu);
 }

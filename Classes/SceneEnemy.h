@@ -27,6 +27,17 @@ public:
 	Button *buttonEnemyC;
 
 	Button *buttonEnemyD;
+	
+	Button *enemyLevel0;
+
+	Button *enemyLevel30;
+
+	Button *enemyLevel50;
+
+	Button *enemyensure;
+
+	Sprite* enemyChooes;
+
 
 	void buttonToBattleClick(cocos2d::Object *Sender);
 

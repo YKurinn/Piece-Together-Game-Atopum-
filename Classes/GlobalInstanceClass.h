@@ -5,6 +5,9 @@
 #include "CharacterB.h"
 #include "CharacterC.h"
 #include "CharacterD.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 class GlobalInstanceClass {
 public:
@@ -29,6 +32,15 @@ public:
 	static bool saveAll();
 
 	static bool loadAll();
+
+	static void playMusicEffect(const char* file);
+
+	static void playMusic(const char* file);
+
+	//音效是否打开
+	static bool musicEffect;
+
+	static bool music;
 };
 
 

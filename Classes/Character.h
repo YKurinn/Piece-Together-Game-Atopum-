@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "Weapon.h"
-
+#include "Shake.h"
 
 USING_NS_CC;
 
@@ -50,6 +50,8 @@ class Character : public Sprite {
 		virtual void loadData() = 0;//读取存档时调用
 
 		virtual void refresh();//依据等级更新角色状态
+
+		virtual void groan() = 0;//呻吟
 
 		void equipWeapon(Weapon* weapon);
 

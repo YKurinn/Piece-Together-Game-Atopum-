@@ -1,5 +1,5 @@
 #include "CharacterA.h"
-
+#include "GlobalInstanceClass.h"
 
 CharacterA* CharacterA::chara = nullptr;//静态全局对象初始化
 
@@ -11,15 +11,15 @@ CharacterA* CharacterA::create(const std::string& filename)
 	{
 		//sprite->autorelease();
 		//name
-		sprite->name = "坂上智代";
+		sprite->name = "Tomoyo";
 		//health
 		sprite->levelZeroHealth = 1000;
 		sprite->levelUpIncreaseHealth = 100;
 		//damage
-		sprite->levelZeroDamage = 100;
+		sprite->levelZeroDamage = 10;
 		sprite->levelUpIncreaseDamage = 15;
 		//defence
-		sprite->levelZeroDefence = 50;
+		sprite->levelZeroDefence = 0;
 		sprite->levelUpIncreaseDefence = 5;
 		//speed
 		sprite->levelZeroSpeed = 0.5;
@@ -42,11 +42,13 @@ CharacterA* CharacterA::getChara() {
 }
 
 void CharacterA::runSkill() {
-
+	this->currentAnger = 0;
+	this->currentSpeed *= 1.15;
+	GlobalInstanceClass::playMusicEffect("audioCharaASkill.wav");
 }
 
 void CharacterA::endSkill() {
-
+	this->currentSpeed = this->basicSpeed;
 }
 
 void CharacterA::firstInitialize() {
@@ -62,4 +64,8 @@ void CharacterA::saveData() {
 void CharacterA::loadData() {
 	this->level = UserDefault::sharedUserDefault()->getIntegerForKey("charaALevel");
 	this->ownership = UserDefault::sharedUserDefault()->getBoolForKey("charaAOwnership");
+}
+
+void CharacterA::groan() {
+	GlobalInstanceClass::playMusicEffect("audioCharaAGroan.wav");
 }

@@ -23,23 +23,14 @@ bool SceneMenu::init()
     {
         return false;
     }
-
-	//启动游戏时的初始化
-	GlobalInstanceClass::loadAll();
-	GlobalInstanceClass::isGameSaved = UserDefault::sharedUserDefault()->getBoolForKey("isGameSaved");
-	if(!GlobalInstanceClass::isGameSaved){
-		GlobalInstanceClass::createAllGlobalInstance();
-		GlobalInstanceClass::firstInitializeAll();
-		GlobalInstanceClass::saveAll();
-		UserDefault::sharedUserDefault()->setBoolForKey("isGameSaved", true);
-	}
-
-
 	//背景
+	SimpleAudioEngine::getInstance()->preloadEffect("audioButton1.mp3");
+
 	auto background = Sprite::create("sceneMenuBackground.jpg");
 	background->setPosition(designResolutionSize.width / 2, designResolutionSize.height / 2);
 	background->setContentSize(Size(designResolutionSize.width, designResolutionSize.height));
 	this->addChild(background);
+
 
 
 	//一堆UI按钮
@@ -79,29 +70,39 @@ bool SceneMenu::init()
 	return true;
 }
 void SceneMenu::buttonStartClick(cocos2d::Object *Sender) {
+	//SimpleAudioEngine::getInstance()->preloadEffect("audioButton1.mp3");
+	//SimpleAudioEngine::getInstance()->playEffect("audioButton1.mp3", false);
+
+	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 	auto *sceneCharacter = SceneCharacter::create();
 	Director::getInstance()->replaceScene(sceneCharacter);
 }
 
 void SceneMenu::buttonSettingClick(cocos2d::Object *Sender) {
+	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 	auto *sceneSetting = SceneSetting::create();
 	Director::getInstance()->replaceScene(sceneSetting);
 }
 
 void SceneMenu::buttonSaveClick(cocos2d::Object *Sender) {
 	//存档方法
+	GlobalInstanceClass::playMusicEffect("audioSave.wav");
 	if(GlobalInstanceClass::saveAll());
 	saveSuccessButton->setVisible(true);
 	saveSuccessButton->setEnabled(true);
 	saveSuccessLabel->setVisible(true);
+	UserDefault::sharedUserDefault()->setBoolForKey("musicEffect", GlobalInstanceClass::musicEffect);
+	UserDefault::sharedUserDefault()->setBoolForKey("music", GlobalInstanceClass::music);
 }
 
 void SceneMenu::buttonSetuClick(cocos2d::Object *Sender) {
+	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 	auto *sceneSetu = SceneSetu::create();
 	Director::getInstance()->replaceScene(sceneSetu);
 }
 
 void SceneMenu::buttonExitClick(cocos2d::Object* Sender) {
 	//退出方法
+	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 	Director::getInstance()->end();
 }

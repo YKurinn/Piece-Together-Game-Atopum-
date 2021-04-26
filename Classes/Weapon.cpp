@@ -22,15 +22,19 @@ void Weapon::equip(Character* chara) {
 
 	if (this->increaseType == "health") {
 		chara->maxHealth *= (1 + this->increasePercent);
+		chara->currentHealth = chara->maxHealth;
 	}
 	else if (this->increaseType == "defence") {
 		chara->basicDefence *= (1 + this->increasePercent);
+		chara->currentDefence = chara->basicDefence;
 	}
 	else if (this->increaseType == "damage") {
 		chara->basicDamage *= (1 + this->increasePercent);
+		chara->currentDamage = chara->basicDamage;
 	}
 	else if (this->increaseType == "speed") {
 		chara->basicSpeed *= (1 + this->increasePercent);
+		chara->currentSpeed = chara->basicSpeed;
 	}
 }
 
@@ -39,15 +43,19 @@ void Weapon::remove() {
 
 	if (this->increaseType == "health") {
 		owner->maxHealth /= (1 + this->increasePercent);
+		owner->currentHealth = owner->maxHealth;
 	}
 	else if (this->increaseType == "defence") {
 		owner->basicDefence /= (1 + this->increasePercent);
+		owner->currentDefence = owner->basicDefence;
 	}
 	else if (this->increaseType == "damage") {
 		owner->basicDamage /= (1 + this->increasePercent);
+		owner->currentDamage = owner->basicDamage;
 	}
 	else if (this->increaseType == "speed") {
 		owner->basicSpeed /= (1 + this->increasePercent);
+		owner->currentSpeed = owner->basicSpeed;
 	}
 	this->owner = nullptr;
 	

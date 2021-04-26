@@ -1,4 +1,5 @@
 #include "CharacterB.h"
+#include "GlobalInstanceClass.h"
 
 
 CharacterB* CharacterB::chara = nullptr;//静态全局对象初始化
@@ -11,18 +12,18 @@ CharacterB* CharacterB::create(const std::string& filename)
 	{
 		//sprite->autorelease();
 		//name
-		sprite->name = "坂上智代";
+		sprite->name = "charaB";
 		//health
 		sprite->levelZeroHealth = 1000;
 		sprite->levelUpIncreaseHealth = 100;
 		//damage
-		sprite->levelZeroDamage = 100;
+		sprite->levelZeroDamage = 10;
 		sprite->levelUpIncreaseDamage = 15;
 		//defence
-		sprite->levelZeroDefence = 50;
+		sprite->levelZeroDefence = 0;
 		sprite->levelUpIncreaseDefence = 5;
 		//speed
-		sprite->levelZeroSpeed = 0.5;
+		sprite->levelZeroSpeed = 0.3;
 		sprite->levelUpIncreaseSpeed = 0.01;
 		sprite->firstInitialize();
 
@@ -42,6 +43,9 @@ CharacterB* CharacterB::getChara() {
 }
 
 void CharacterB::runSkill() {
+	this->currentAnger = 0;
+	this->currentHealth *= 0.15*this->maxHealth;
+	GlobalInstanceClass::playMusicEffect("audioCharaBSkill.wav");
 
 }
 
@@ -62,4 +66,8 @@ void CharacterB::saveData() {
 void CharacterB::loadData() {
 	this->level = UserDefault::sharedUserDefault()->getIntegerForKey("charaBLevel");
 	this->ownership = UserDefault::sharedUserDefault()->getBoolForKey("charaBOwnership");
+}
+
+void CharacterB::groan() {
+	GlobalInstanceClass::playMusicEffect("audioCharaBGroan.wav");
 }
