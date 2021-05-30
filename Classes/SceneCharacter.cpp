@@ -24,6 +24,10 @@ bool SceneCharacter::init() {
 	characterBackground->setPosition(designResolutionSize.width / 2, designResolutionSize.height / 2);
 	characterBackground->setContentSize(Size(designResolutionSize.width, designResolutionSize.height));
 	this->addChild(characterBackground);
+	//info图片
+	auto selectWeapon = Sprite::create("selectChara.png");
+	selectWeapon->setPosition(designResolutionSize.width / 2, designResolutionSize.height * 0.8);
+	this->addChild(selectWeapon);
 
 	//返回按钮
 	buttonBack = Menu::create(MenuItemImage::create("back.png", "back1.png", this, menu_selector(SceneCharacter::buttonBackClick)), NULL);
@@ -79,7 +83,7 @@ bool SceneCharacter::init() {
 	buttonCharacterC->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.3));
 
 	//选择角色D
-	buttonCharacterD = Button::create("tomoyo.png", "tomoyo.png", "tomoyo.png");
+	buttonCharacterD = Button::create("tiansuo.png", "tiansuo.png", "tiansuo.png");
 	buttonCharacterD->setPosition(Vec2(designResolutionSize.width*0.8, designResolutionSize.height*0.5));
 	this->addChild(buttonCharacterD);
 	buttonCharacterD->addClickEventListener([=](Ref *ref) {

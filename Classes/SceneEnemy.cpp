@@ -116,7 +116,7 @@ bool SceneEnemy::init() {
 	buttonEnemyA->addClickEventListener([=](Ref *ref) {
 		GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 		GlobalInstanceClass::enemy = CharacterA::create("charaA_enemy.png");
-		buttonToBattle->setEnabled(!(GlobalInstanceClass::enemy == GlobalInstanceClass::player));
+		buttonToBattle->setEnabled(!(GlobalInstanceClass::enemy->name == GlobalInstanceClass::player->name));
 	});
 	buttonEnemyA->ignoreContentAdaptWithSize(false);
 	buttonEnemyA->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.3));
@@ -128,7 +128,7 @@ bool SceneEnemy::init() {
 	buttonEnemyB->addClickEventListener([=](Ref *ref) {
 		GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 		GlobalInstanceClass::enemy = CharacterB::create("charaB_enemy.png");
-		buttonToBattle->setEnabled(!(GlobalInstanceClass::enemy == GlobalInstanceClass::player));
+		buttonToBattle->setEnabled(!(GlobalInstanceClass::enemy->name == GlobalInstanceClass::player->name));
 	});
 	buttonEnemyB->ignoreContentAdaptWithSize(false);
 	buttonEnemyB->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.3));
@@ -140,19 +140,19 @@ bool SceneEnemy::init() {
 	buttonEnemyC->addClickEventListener([=](Ref *ref) {
 		GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 		GlobalInstanceClass::enemy = CharacterC::create("charaC_enemy.png");
-		buttonToBattle->setEnabled(!(GlobalInstanceClass::enemy == GlobalInstanceClass::player));
+		buttonToBattle->setEnabled(!(GlobalInstanceClass::enemy->name == GlobalInstanceClass::player->name));
 	});
 	buttonEnemyC->ignoreContentAdaptWithSize(false);
 	buttonEnemyC->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.3));
 
 	//Ñ¡ÔñµÐÈËD
-	buttonEnemyD = Button::create("tomoyo.png", "tomoyo.png", "tomoyo.png");
+	buttonEnemyD = Button::create("tiansuo.png", "tiansuo.png", "tiansuo.png");
 	buttonEnemyD->setPosition(Vec2(designResolutionSize.width*0.8, designResolutionSize.height*0.5));
 	this->addChild(buttonEnemyD);
 	buttonEnemyD->addClickEventListener([=](Ref *ref) {
 		GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 		GlobalInstanceClass::enemy = CharacterD::create("charaD_enemy.png");
-		buttonToBattle->setEnabled(!(GlobalInstanceClass::enemy == GlobalInstanceClass::player));
+		buttonToBattle->setEnabled(!(GlobalInstanceClass::enemy->name == GlobalInstanceClass::player->name));
 	});
 	buttonEnemyD->ignoreContentAdaptWithSize(false);
 	buttonEnemyD->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.3));

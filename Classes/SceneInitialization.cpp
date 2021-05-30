@@ -20,16 +20,18 @@ bool SceneInitialization::init() {
 	this->scheduleOnce(schedule_selector(SceneInitialization::changeScene), 0.05f);
 
 	//启动游戏时的初始化
-	GlobalInstanceClass::loadAll();
 
 		GlobalInstanceClass::isGameSaved = UserDefault::sharedUserDefault()->getBoolForKey("isGameSaved");
 	if (!GlobalInstanceClass::isGameSaved) {
 		GlobalInstanceClass::createAllGlobalInstance();
 		GlobalInstanceClass::firstInitializeAll();
 		GlobalInstanceClass::saveAll();
+		UserDefault::sharedUserDefault()->setBoolForKey("musicEffect", true);
+		UserDefault::sharedUserDefault()->setBoolForKey("music", true);
 		UserDefault::sharedUserDefault()->setBoolForKey("isGameSaved", true);
-	}
 
+	}
+	GlobalInstanceClass::loadAll();
 	//加载BGM
 	GlobalInstanceClass::playMusic("03.mp3");
 

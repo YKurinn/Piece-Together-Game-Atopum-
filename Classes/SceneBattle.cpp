@@ -139,8 +139,25 @@ bool SceneBattle::init() {
 		auto scene = SceneMenu::create();
 		Director::sharedDirector()->replaceScene(scene);
 	});
-
 	this->addChild(battleSuccess, 2);
+	//失败窗口
+	battleFailed = Sprite::create("battleFailed.png");
+	battleFailed->setPosition(designResolutionSize.width * 0.5, designResolutionSize.height * 0.5);
+	battleFailed->setVisible(false);
+	battleFailed->setContentSize(Size(400, 300));
+	buttonFailed = Button::create("confirm.png", "confirm1.png");
+	battleFailed->addChild(buttonFailed);
+	buttonFailed->setPosition(Vec2(200, 40));
+	buttonFailed->setEnabled(false);
+	buttonFailed->addClickEventListener([=](Ref* ref) {
+		SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+		GlobalInstanceClass::playMusic("03.mp3");
+		auto scene = SceneMenu::create();
+		Director::sharedDirector()->replaceScene(scene);
+	});
+	this->addChild(battleFailed, 2);
+
+	
 	
 	return true;
 }
@@ -221,8 +238,9 @@ void SceneBattle::update(float dt) {
 		}
 		//敌人获胜
 		else {
-			
+			battleFailed->setVisible(true);
+			buttonFailed->setEnabled(true);
+			this->unscheduleAllSelectors();//停止所有定时器
 		}
-		CC_SAFE_DELETE(GlobalInstanceClass::enemy);
 	}
 }

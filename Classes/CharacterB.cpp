@@ -12,18 +12,18 @@ CharacterB* CharacterB::create(const std::string& filename)
 	{
 		//sprite->autorelease();
 		//name
-		sprite->name = "charaB";
+		sprite->name = "Sikadi";
 		//health
 		sprite->levelZeroHealth = 1000;
 		sprite->levelUpIncreaseHealth = 100;
 		//damage
-		sprite->levelZeroDamage = 10;
+		sprite->levelZeroDamage = 100;
 		sprite->levelUpIncreaseDamage = 15;
 		//defence
 		sprite->levelZeroDefence = 0;
 		sprite->levelUpIncreaseDefence = 5;
 		//speed
-		sprite->levelZeroSpeed = 0.3;
+		sprite->levelZeroSpeed = 0.5;
 		sprite->levelUpIncreaseSpeed = 0.01;
 		sprite->firstInitialize();
 
@@ -44,7 +44,8 @@ CharacterB* CharacterB::getChara() {
 
 void CharacterB::runSkill() {
 	this->currentAnger = 0;
-	this->currentHealth *= 0.15*this->maxHealth;
+	this->currentHealth += 0.15*this->maxHealth;
+	if (this->currentHealth > this->maxHealth)this->currentHealth = this->maxHealth;
 	GlobalInstanceClass::playMusicEffect("audioCharaBSkill.wav");
 
 }

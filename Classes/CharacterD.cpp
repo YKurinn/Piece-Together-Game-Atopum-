@@ -12,18 +12,18 @@ CharacterD* CharacterD::create(const std::string& filename)
 	{
 		//sprite->autorelease();
 		//name
-		sprite->name = "charaD";
+		sprite->name = "tadokorokouji";
 		//health
 		sprite->levelZeroHealth = 1000;
 		sprite->levelUpIncreaseHealth = 100;
 		//damage
-		sprite->levelZeroDamage = 10;
+		sprite->levelZeroDamage = 100;
 		sprite->levelUpIncreaseDamage = 15;
 		//defence
 		sprite->levelZeroDefence = 0;
 		sprite->levelUpIncreaseDefence = 5;
 		//speed
-		sprite->levelZeroSpeed = 1.0;
+		sprite->levelZeroSpeed = 0.5;
 		sprite->levelUpIncreaseSpeed = 0.01;
 		sprite->firstInitialize();
 

@@ -3,6 +3,7 @@
 #include "AppDelegate.h"
 #include "SceneSetting.h"
 #include "SceneSetu.h"
+#include "SceneHelp.h"
 #include "GlobalInstanceClass.h"
 #include "CharacterA.h"
 #include "stdio.h"
@@ -36,20 +37,24 @@ bool SceneMenu::init()
 	//一堆UI按钮
 	buttonStart = Menu::create(MenuItemImage::create("start.png", "start1.png", this, menu_selector(SceneMenu::buttonStartClick)), NULL);
 	buttonSetting = Menu::create(MenuItemImage::create("setting.png", "setting1.png", this, menu_selector(SceneMenu::buttonSettingClick)), NULL);
-	buttonSetu = Menu::create(MenuItemImage::create("setu.png", "setu1.png", this, menu_selector(SceneMenu::buttonSetuClick)), NULL);
+	buttonHelp = Menu::create(MenuItemImage::create("help.png", "help1.png", this, menu_selector(SceneMenu::buttonHelpClick)), NULL);
 	buttonSave = Menu::create(MenuItemImage::create("save.png", "save1.png", this, menu_selector(SceneMenu::buttonSaveClick)), NULL);
 	buttonExit = Menu::create(MenuItemImage::create("exit.png", "exit1.png", this, menu_selector(SceneMenu::buttonExitClick)), NULL);
+	buttonSetu = Menu::create(MenuItemImage::create("setu.png", "setu1.png", this, menu_selector(SceneMenu::buttonSetuClick)), NULL);
 	buttonStart->setPosition(designResolutionSize.width/2, designResolutionSize.height*0.6);
 	buttonSetting->setPosition(designResolutionSize.width / 2, designResolutionSize.height*0.5);
-	buttonSetu->setPosition(designResolutionSize.width / 2, designResolutionSize.height*0.4);
+	buttonHelp->setPosition(designResolutionSize.width / 2, designResolutionSize.height*0.4);
 	buttonSave->setPosition(designResolutionSize.width / 2, designResolutionSize.height*0.3);
 	buttonExit->setPosition(designResolutionSize.width / 2, designResolutionSize.height*0.2);
+	buttonSetu->setPosition(designResolutionSize.width / 2, designResolutionSize.height * 0.1);
 	this->addChild(buttonStart);
 	this->addChild(buttonSetting);
-	this->addChild(buttonSetu);
+	this->addChild(buttonHelp);
 	this->addChild(buttonSave);
 	this->addChild(buttonExit);
-
+	this->addChild(buttonSetu);
+	buttonSetu->setVisible(false);
+	buttonSetu->setEnabled(false);
 	//存档成功按钮及标签
 	saveSuccessButton = Button::create("confirm.png", "confirm.png", "confirm.png");
 	saveSuccessButton->setVisible(false);
@@ -91,8 +96,6 @@ void SceneMenu::buttonSaveClick(cocos2d::Object *Sender) {
 	saveSuccessButton->setVisible(true);
 	saveSuccessButton->setEnabled(true);
 	saveSuccessLabel->setVisible(true);
-	UserDefault::sharedUserDefault()->setBoolForKey("musicEffect", GlobalInstanceClass::musicEffect);
-	UserDefault::sharedUserDefault()->setBoolForKey("music", GlobalInstanceClass::music);
 }
 
 void SceneMenu::buttonSetuClick(cocos2d::Object *Sender) {
@@ -105,4 +108,9 @@ void SceneMenu::buttonExitClick(cocos2d::Object* Sender) {
 	//退出方法
 	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
 	Director::getInstance()->end();
+}
+
+void SceneMenu::buttonHelpClick(cocos2d::Object* Sender) {
+	GlobalInstanceClass::playMusicEffect("audioButton1.wav");
+	Director::getInstance()->replaceScene(SceneHelp::create());
 }

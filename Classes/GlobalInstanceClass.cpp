@@ -39,7 +39,8 @@ bool GlobalInstanceClass::saveAll() {
 	CharacterB::getChara()->saveData();
 	CharacterC::getChara()->saveData();
 	CharacterD::getChara()->saveData();
-	
+	UserDefault::sharedUserDefault()->setBoolForKey("musicEffect", GlobalInstanceClass::musicEffect);
+	UserDefault::sharedUserDefault()->setBoolForKey("music", GlobalInstanceClass::music);
 	return true;
 }
 

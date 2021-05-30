@@ -17,9 +17,10 @@ public:
 
 	Menu *buttonStart;
 	Menu *buttonSetting;
-	Menu *buttonSetu;
+	Menu *buttonHelp;
 	Menu *buttonSave;
 	Menu *buttonExit;
+	Menu* buttonSetu;
 
 	Button* saveSuccessButton;
 	Label* saveSuccessLabel;
@@ -29,7 +30,7 @@ public:
 	void buttonSetuClick(cocos2d::Object *Sender);
 	void buttonSaveClick(cocos2d::Object *Sender);
 	void buttonExitClick(cocos2d::Object *Sender);
-
+	void buttonHelpClick(cocos2d::Object* Sender);
     CREATE_FUNC(SceneMenu);
 };
 

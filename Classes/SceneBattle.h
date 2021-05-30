@@ -29,6 +29,9 @@ public:
 	Sprite* battleSuccess;
 	Button* buttonSuccess;
 
+	Sprite* battleFailed;
+	Button* buttonFailed;
+
 	Sprite* playerBloodBarBack;
 	Sprite* playerBloodBar;
 	Sprite* playerAngerBar;

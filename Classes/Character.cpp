@@ -1,9 +1,12 @@
 #include "Character.h"
-
+#include <ctime>
 
 void Character::attack(Character* chara) {
 	//造成伤害
-	double damage = this->currentDamage - chara->currentDefence;//有效伤害
+	srand(clock());
+	int r = rand();
+	double p = (double(( r % 101)) / 100 + 0.5);
+	double damage = (this->currentDamage - chara->currentDefence)* p;//有效伤害
 	if (damage > 0) {
 		chara->currentHealth -= damage;
 		//被击方呻吟
@@ -12,7 +15,7 @@ void Character::attack(Character* chara) {
 		chara->runAction(Shake::create(0.2, 50));
 
 		//在被击方附近显示伤害
-		Label* damageLabel = Label::createWithTTF(std::to_string(damage), "fonts\\Marker Felt.ttf", 30);
+		Label* damageLabel = Label::createWithTTF(std::to_string(int(damage)), "fonts\\Marker Felt.ttf", 30);
 		chara->addChild(damageLabel);
 		damageLabel->setPosition(chara->getContentSize());
 		//0.5秒后伤害信息消失
@@ -31,8 +34,8 @@ void Character::attack(Character* chara) {
 		}, 0.5, "damageInfo");
 	}
 	//双方怒气增加
-	this->currentAnger += 2;
-	chara->currentAnger += 5;
+	this->currentAnger += 3;
+	chara->currentAnger += 7;
 }
 
 void Character::equipWeapon(Weapon* weapon) {

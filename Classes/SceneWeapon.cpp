@@ -28,11 +28,19 @@ bool SceneWeapon::init() {
 	//³õÊ¼»¯Ö÷½Ç
 	GlobalInstanceClass::player->refresh();
 
+	
+
 	//±³¾°Í¼Æ¬
 	auto weaponBackground = Sprite::create("weaponBakground.jpg");
 	weaponBackground->setPosition(designResolutionSize.width / 2, designResolutionSize.height / 2);
 	weaponBackground->setContentSize(Size(designResolutionSize.width, designResolutionSize.height));
 	this->addChild(weaponBackground);
+
+	//infoÍ¼Æ¬
+	auto selectWeapon = Sprite::create("selectWeapon.png");
+	selectWeapon->setPosition(designResolutionSize.width / 2, designResolutionSize.height * 0.8);
+	this->addChild(selectWeapon);
+	
 
 	//·µ»Ø°´Å¥
 	buttonBack = Menu::create(MenuItemImage::create("back.png", "back1.png", this, menu_selector(SceneWeapon::buttonBackClick)), NULL);
@@ -54,10 +62,17 @@ bool SceneWeapon::init() {
 		GlobalInstanceClass::player->equipWeapon(Weapon::create("weapon1.png","cd",0.15,"damage"));
 	});
 	buttonWeapon1->ignoreContentAdaptWithSize(false);
-	buttonWeapon1->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.5));
+	buttonWeapon1->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.width * 0.15));
+	//ÎäÆ÷ËµÃ÷
+	Label* weaponLabel1 = Label::createWithTTF("WindViolenceBigSword", "fonts\\Marker Felt.ttf", 30);
+	Label* weaponLabel2 = Label::createWithTTF("Increase your damage", "fonts\\Marker Felt.ttf", 30);
+	weaponLabel1->setPosition(Vec2(designResolutionSize.width * 0.2, designResolutionSize.height * 0.5-100));
+	weaponLabel2->setPosition(Vec2(designResolutionSize.width * 0.2, designResolutionSize.height * 0.5-200));
+	this->addChild(weaponLabel1);
+	this->addChild(weaponLabel2);
 
 	//Ñ¡ÔñÎäÆ÷2
-	buttonWeapon2 = Button::create("weapon1.png", "weapon1.png", "weapon1.png");
+	buttonWeapon2 = Button::create("weapon2.png", "weapon2.png", "weapon2.png");
 	buttonWeapon2->setPosition(Vec2(designResolutionSize.width*0.4, designResolutionSize.height*0.5));
 	this->addChild(buttonWeapon2);
 	buttonWeapon2->addClickEventListener([=](Ref *ref) {
@@ -66,10 +81,17 @@ bool SceneWeapon::init() {
 		GlobalInstanceClass::player->equipWeapon(Weapon::create("weapon1.png", "cd", 0.15, "defence"));
 	});
 	buttonWeapon2->ignoreContentAdaptWithSize(false);
-	buttonWeapon2->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.5));
+	buttonWeapon2->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.width * 0.15));
+	//ÎäÆ÷ËµÃ÷
+	Label* weaponLabel3 = Label::createWithTTF("LockSonArmor", "fonts\\Marker Felt.ttf", 30);
+	Label* weaponLabel4 = Label::createWithTTF("Increase your defence", "fonts\\Marker Felt.ttf", 30);
+	weaponLabel3->setPosition(Vec2(designResolutionSize.width * 0.4, designResolutionSize.height * 0.5 - 100));
+	weaponLabel4->setPosition(Vec2(designResolutionSize.width * 0.4, designResolutionSize.height * 0.5 - 200));
+	this->addChild(weaponLabel3);
+	this->addChild(weaponLabel4);
 
 	//Ñ¡ÔñÎäÆ÷3
-	buttonWeapon3 = Button::create("weapon1.png", "weapon1.png", "weapon1.png");
+	buttonWeapon3 = Button::create("weapon3.png", "weapon3.png", "weapon3.png");
 	buttonWeapon3->setPosition(Vec2(designResolutionSize.width*0.6, designResolutionSize.height*0.5));
 	this->addChild(buttonWeapon3);
 	buttonWeapon3->addClickEventListener([=](Ref *ref) {
@@ -78,10 +100,17 @@ bool SceneWeapon::init() {
 		GlobalInstanceClass::player->equipWeapon(Weapon::create("weapon1.png", "cd", 0.15, "health"));
 	});
 	buttonWeapon3->ignoreContentAdaptWithSize(false);
-	buttonWeapon3->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.5));
+	buttonWeapon3->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.width * 0.15));
+	//ÎäÆ÷ËµÃ÷
+	Label* weaponLabel5 = Label::createWithTTF("HugeManWaistMelt", "fonts\\Marker Felt.ttf", 30);
+	Label* weaponLabel6 = Label::createWithTTF("Increase your health", "fonts\\Marker Felt.ttf", 30);
+	weaponLabel5->setPosition(Vec2(designResolutionSize.width * 0.6, designResolutionSize.height * 0.5 - 100));
+	weaponLabel6->setPosition(Vec2(designResolutionSize.width * 0.6, designResolutionSize.height * 0.5 - 200));
+	this->addChild(weaponLabel5);
+	this->addChild(weaponLabel6);
 
 	//Ñ¡ÔñÎäÆ÷4
-	buttonWeapon4 = Button::create("weapon1.png", "weapon1.png", "weapon1.png");
+	buttonWeapon4 = Button::create("weapon4.png", "weapon4.png", "weapon4.png");
 	buttonWeapon4->setPosition(Vec2(designResolutionSize.width*0.8, designResolutionSize.height*0.5));
 	this->addChild(buttonWeapon4);
 	buttonWeapon4->addClickEventListener([=](Ref *ref) {
@@ -90,7 +119,15 @@ bool SceneWeapon::init() {
 		GlobalInstanceClass::player->equipWeapon(Weapon::create("weapon1.png", "cd", 0.05, "speed"));
 	});
 	buttonWeapon4->ignoreContentAdaptWithSize(false);
-	buttonWeapon4->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.height*0.5));
+	buttonWeapon4->setContentSize(Size(designResolutionSize.width*0.15, designResolutionSize.width * 0.15));
+	//ÎäÆ÷ËµÃ÷
+	Label* weaponLabel7 = Label::createWithTTF("AntiCurved'sBow", "fonts\\Marker Felt.ttf", 30);
+	Label* weaponLabel8 = Label::createWithTTF("Increase your speed", "fonts\\Marker Felt.ttf", 30);
+	weaponLabel7->setPosition(Vec2(designResolutionSize.width * 0.8, designResolutionSize.height * 0.5 - 100));
+	weaponLabel8->setPosition(Vec2(designResolutionSize.width * 0.8, designResolutionSize.height * 0.5 - 200));
+	this->addChild(weaponLabel7);
+	this->addChild(weaponLabel8);
+
 	return true;
 }
 

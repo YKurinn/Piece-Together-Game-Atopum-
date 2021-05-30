@@ -16,7 +16,7 @@ CharacterA* CharacterA::create(const std::string& filename)
 		sprite->levelZeroHealth = 1000;
 		sprite->levelUpIncreaseHealth = 100;
 		//damage
-		sprite->levelZeroDamage = 10;
+		sprite->levelZeroDamage = 100;
 		sprite->levelUpIncreaseDamage = 15;
 		//defence
 		sprite->levelZeroDefence = 0;
